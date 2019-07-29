@@ -6,7 +6,9 @@ $("#submit").click(function() {
         var artist = $("#artist").val().trim();
         console.log(track);
         $("#trackInfo").empty();
-
+if (track == "") {
+    alert("please enter a value!")
+} else{
 
 var queryURL = "https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=" + track + "&q_artist=" + artist + "&page_size=1&page=1&s_track_rating=desc&apikey=4361e89398d1b525228c0f37e4566dc1";
 
@@ -41,5 +43,6 @@ $.ajax({
     });
 }
 });
+}
 });
 });
