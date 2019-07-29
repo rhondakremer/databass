@@ -1,9 +1,5 @@
 $(document).ready(function () {
 
-    function jsonEscape(str) {
-        return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
-    };
-
     $("#submit").click(function () {
         var track = $("#track").val().trim();
         var artist = $("#artist").val().trim();
@@ -48,10 +44,13 @@ $(document).ready(function () {
 
                         lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />')
 
-                        $("#lyrics").html(lyrics);
+                        $("#lyricsDisplay").html(lyrics);
                     });
                 }
             });
         }
     });
+
+
+
 });
