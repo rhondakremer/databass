@@ -42,7 +42,7 @@ $(document).ready(function () {
 
                         //lyrics = JSON.stringify(lyrics);
 
-                        lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />')
+                        //lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />')
 
                         $("#lyricsDisplay").html(lyrics);
                     });
@@ -52,5 +52,41 @@ $(document).ready(function () {
     });
 
 
+    $("#analyze").click(function () {
+   
+        var lyricsText = $("#lyricsDisplay").text();
+        console.log(lyricsText);
+        var queryURL = "https://twinword-emotion-analysis-v1.p.rapidapi.com/analyze/";
+    
+    
+        $.ajax({
+            url: queryURL,
+            dataType: "json",
+            headers: {"x-rapidapi-host" : "twinword-emotion-analysis-v1.p.rapidapi.com",
+            "x-rapidapi-key": "019d9911ccmsh87bdd63e27af5c7p1fb859jsn4a1152c06ebe"},
+            data: {
+                "text": lyricsText
+            },
+    
+            method: "GET"
+    
+    
+        }).then(function (response) {
+            console.log($("#lyricsDisplay").val());
+            console.log(response);
+            console.log(response.emotion_scores);
+            var emotionText = JSON.stringify(response.emotion_scores)
+            $("#emotionsScore").html("<p>" + emotionText + "</p>")
+                
+          
+        
+    
+            
+            });
+    
+    
+    
+    });
+    
 
 });
