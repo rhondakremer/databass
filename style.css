@@ -1,0 +1,4 @@
+#lyricsDisplay {
+    display: flex;
+    white-space: pre;
+}
