@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+
+
+
+    
+
     $("#submit").click(function () {
         var track = $("#track").val().trim();
         var artist = $("#artist").val().trim();
@@ -42,7 +47,7 @@ $(document).ready(function () {
 
                         //lyrics = JSON.stringify(lyrics);
 
-                        lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />')
+                        //lyrics.replace(/(?:\r\n|\r|\n)/g, '<br />')
 
                         $("#lyricsDisplay").html(lyrics);
                     });
@@ -52,5 +57,51 @@ $(document).ready(function () {
     });
 
 
+    $("#analyze").click(function () {
+   
+        var lyricsText = $("#lyricsDisplay").text();
+        console.log(lyricsText);
+        var queryURL = "https://twinword-emotion-analysis-v1.p.rapidapi.com/analyze/";
+    
+    
+        $.ajax({
+            url: queryURL,
+            dataType: "json",
+            headers: {"x-rapidapi-host" : "twinword-emotion-analysis-v1.p.rapidapi.com",
+            "x-rapidapi-key": "019d9911ccmsh87bdd63e27af5c7p1fb859jsn4a1152c06ebe"},
+            data: {
+                "text": lyricsText
+            },
+    
+            method: "GET"
+    
+    
+        }).then(function (response) {
+            console.log($("#lyricsDisplay").val());
+            console.log(response);
+            console.log(response.emotion_scores);
+            var anger = JSON.stringify(response.emotion_scores.anger);
+            var joy =  JSON.stringify(response.emotion_scores.joy);
+            var fear =  JSON.stringify(response.emotion_scores.fear);
+            var surprise =  JSON.stringify(response.emotion_scores.surprise);
+            var disgust =  JSON.stringify(response.emotion_scores.disgust);
+            var sadness =  JSON.stringify(response.emotion_scores.sadness);
+            console.log(anger);
 
+        $("#emotionsScore").html( "Anger level: " + anger + "</br></br>") 
+        $("#emotionsScore").append( "Joy level: " + joy + "</br></br>") 
+        $("#emotionsScore").append( "Fear level: " + fear + "</br></br>") 
+        $("#emotionsScore").append( "Surprise level: " + surprise + "</br> </br>") 
+        $("#emotionsScore").append( "Disgust level: " + disgust + "</br></br>") 
+        $("#emotionsScore").append( "Sadness level: " + sadness + "</br></br>") 
+           
+        
+    
+            
+            });
+    
+    
+    
+    });
+   
 });
