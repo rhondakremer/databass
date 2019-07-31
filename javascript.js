@@ -80,7 +80,6 @@ $(document).ready(function () {
             console.log($("#lyricsDisplay").val());
             console.log(response);
             console.log(response.emotion_scores);
-<<<<<<< HEAD
             var anger = (parseFloat((JSON.stringify(response.emotion_scores.anger))).toFixed(2))*100;
             var joy =  (parseFloat((JSON.stringify(response.emotion_scores.joy))).toFixed(2))*100;
             var fear =  (parseFloat((JSON.stringify(response.emotion_scores.fear))).toFixed(2))*100;
@@ -88,15 +87,6 @@ $(document).ready(function () {
             var disgust =  (parseFloat((JSON.stringify(response.emotion_scores.disgust))).toFixed(2))*100;
             var sadness =  (parseFloat((JSON.stringify(response.emotion_scores.sadness))).toFixed(2))*100;
             
-=======
-
-            var anger = JSON.stringify(response.emotion_scores.anger);
-            var joy =  JSON.stringify(response.emotion_scores.joy);
-            var fear =  JSON.stringify(response.emotion_scores.fear);
-            var surprise =  JSON.stringify(response.emotion_scores.surprise);
-            var disgust =  JSON.stringify(response.emotion_scores.disgust);
-            var sadness =  JSON.stringify(response.emotion_scores.sadness);
->>>>>>> 93c5814948ba98379f7689a5a8299a1bb6988158
             console.log(anger);
 
         $("#emotionsScore").html( "Anger level: " + anger + "%" + "</br></br>") 
