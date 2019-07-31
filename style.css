@@ -2,3 +2,67 @@
     display: flex;
     white-space: pre;
 }
+
+.emoji{
+    height: 100px;
+    width: 100px;
+}
+
+
+.headText {
+    color: coral;
+    font-weight: 800;
+    font-size: 4em;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+  }
+  
+  .headText .word {
+    display: inline-block;
+    line-height: 1em;
+  }
+
+
+
+
+
+  .fade-in {
+    color:rgb(9, 245, 9);
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+    animation-duration: 4s;
+    font-size: 100px;
+    font-family: 'Saira Stencil One', cursive;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+        opacity: 0.2;
+        color: crimson;
+        font-size: 0px;
+    }
+    
+	80% {
+        color: crimson;
+        opacity: 0.8;
+        font-size: 100px;
+        font-family: 'Saira Stencil One', cursive;
+	}
+
+
+
+
+	100% {
+        color: rgb(9, 245, 9);
+        opacity: 0.8;
+        font-size: 100px;
+        font-family: 'Saira Stencil One', cursive;
+	}
+}
+
+.header{
+    background-image:url('https://i.pinimg.com/originals/a5/22/fc/a522fc07c82ba52661fc4877a310ced7.jpg');
+    background-size: 30%;
+}

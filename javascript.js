@@ -1,5 +1,82 @@
 $(document).ready(function () {
 
+    anime({
+        targets: '.happy',
+        translateX: 250,
+        rotate: '2turn',
+        duration: 1000,
+        easing: 'linear',
+        direction: "alternate",
+
+      });
+
+      anime({
+        targets: '.hmm',
+        translateX: -25,
+        translateY:-100,
+        rotate: '1turn',
+        duration: 1000,
+        easing: 'linear',
+        direction: "alternate",
+      });
+
+      anime({
+        targets: '.sad',
+        translateX: -25,
+        rotate: '2turn',
+        duration: 4000,
+        easing: 'linear',
+        direction: "alternate",
+      });
+
+
+      anime({
+        targets: '.mad',
+        translateX: 250,
+        translateY:-100,
+        rotate: '2turn',
+        duration: 2000,
+        easing: 'linear',
+        direction: "alternate",
+      });
+
+
+      anime({
+        targets: '.calm',
+        translateX: -250,
+        translateY:-100,
+        rotate: '2turn',
+        duration: 2000,
+        easing: 'linear',
+        direction: "alternate",
+      });
+
+
+      anime({
+        targets: '.fade-in',
+        translateX: 200,
+      });
+
+
+      anime({
+        targets: '.imageDiv',
+        translateX: 200,
+      });
+
+      anime.timeline({loop: false})
+  .add({
+    targets: '.headText .word',
+    scale: [14,1],
+    opacity: [0,1],
+    easing: "easeOutCirc",
+    duration: 8000,
+    translateX:250,
+    delay: function(el, i) {
+      return 800 * i;
+    }
+
+  });
+
     $("#submit").click(function () {
         var track = $("#track").val().trim();
         var artist = $("#artist").val().trim();
@@ -76,15 +153,26 @@ $(document).ready(function () {
             console.log(response);
             console.log(response.emotion_scores);
             var emotionText = JSON.stringify(response.emotion_scores)
-            $("#emotionsScore").html("<p>" + emotionText + "</p>")
-                
-          
-        
-    
+            var joy = (parseFloat((JSON.stringify(response.emotion_scores.joy))).toFixed(2))*100
+            var surprise = (parseFloat((JSON.stringify(response.emotion_scores.surprise))).toFixed(2))*100
+            var sadness = (parseFloat((JSON.stringify(response.emotion_scores.sadness))).toFixed(2))*100
+            var anger = (parseFloat((JSON.stringify(response.emotion_scores.anger))).toFixed(2))*100
+            var fear =(parseFloat((JSON.stringify(response.emotion_scores.fear))).toFixed(2))*100
+            var disgust = (parseFloat((JSON.stringify(response.emotion_scores.disgust))).toFixed(2))*100
+            $("#emotionsScore").html("<p>" + "joy:" + joy + "%" + "</p>")
+            $("#emotionsScore").append("<p>" + "surpise:" + surprise + "%" + "</p>")
+            $("#emotionsScore").append("<p>" + "sadness:" + sadness + "%" +  "</p>")
+            $("#emotionsScore").append("<p>" + "anger:" + anger + "%" +  "</p>")
+            $("#emotionsScore").append("<p>" + "fear:" + fear + "%" +  "</p>")
+            $("#emotionsScore").append("<p>" + "disgust:" + disgust + "%" +  "</p>")
+
             
             });
     
     
+
+
+
     
     });
     
