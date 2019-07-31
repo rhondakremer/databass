@@ -80,6 +80,7 @@ $(document).ready(function () {
             console.log($("#lyricsDisplay").val());
             console.log(response);
             console.log(response.emotion_scores);
+
             var anger = JSON.stringify(response.emotion_scores.anger);
             var joy =  JSON.stringify(response.emotion_scores.joy);
             var fear =  JSON.stringify(response.emotion_scores.fear);
@@ -95,6 +96,7 @@ $(document).ready(function () {
         $("#emotionsScore").append( "Disgust level: " + disgust + "</br></br>") 
         $("#emotionsScore").append( "Sadness level: " + sadness + "</br></br>") 
            
+
         
     
             
@@ -103,5 +105,5 @@ $(document).ready(function () {
     
     
     });
-   
+
 });
