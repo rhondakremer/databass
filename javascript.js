@@ -80,21 +80,21 @@ $(document).ready(function () {
             console.log($("#lyricsDisplay").val());
             console.log(response);
             console.log(response.emotion_scores);
-
-            var anger = JSON.stringify(response.emotion_scores.anger);
-            var joy =  JSON.stringify(response.emotion_scores.joy);
-            var fear =  JSON.stringify(response.emotion_scores.fear);
-            var surprise =  JSON.stringify(response.emotion_scores.surprise);
-            var disgust =  JSON.stringify(response.emotion_scores.disgust);
-            var sadness =  JSON.stringify(response.emotion_scores.sadness);
+            var anger = (parseFloat((JSON.stringify(response.emotion_scores.anger))).toFixed(2))*100;
+            var joy =  (parseFloat((JSON.stringify(response.emotion_scores.joy))).toFixed(2))*100;
+            var fear =  (parseFloat((JSON.stringify(response.emotion_scores.fear))).toFixed(2))*100;
+            var surprise = (parseFloat((JSON.stringify(response.emotion_scores.surprise))).toFixed(2))*100;
+            var disgust =  (parseFloat((JSON.stringify(response.emotion_scores.disgust))).toFixed(2))*100;
+            var sadness =  (parseFloat((JSON.stringify(response.emotion_scores.sadness))).toFixed(2))*100;
+            
             console.log(anger);
 
-        $("#emotionsScore").html( "Anger level: " + anger + "</br></br>") 
-        $("#emotionsScore").append( "Joy level: " + joy + "</br></br>") 
-        $("#emotionsScore").append( "Fear level: " + fear + "</br></br>") 
-        $("#emotionsScore").append( "Surprise level: " + surprise + "</br> </br>") 
-        $("#emotionsScore").append( "Disgust level: " + disgust + "</br></br>") 
-        $("#emotionsScore").append( "Sadness level: " + sadness + "</br></br>") 
+        $("#emotionsScore").html( "Anger level: " + anger + "%" + "</br></br>") 
+        $("#emotionsScore").append( "Joy level: " + joy +  "%" + "</br></br>") 
+        $("#emotionsScore").append( "Fear level: " + fear + "%" + "</br></br>") 
+        $("#emotionsScore").append( "Surprise level: " + surprise + "%" + "</br> </br>") 
+        $("#emotionsScore").append( "Disgust level: " + disgust + "%" + "</br></br>") 
+        $("#emotionsScore").append( "Sadness level: " + sadness + "%" + "</br></br>") 
            
 
         
