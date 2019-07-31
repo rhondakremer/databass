@@ -10,133 +10,46 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="style.css">  
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Blinker&display=swap" rel="stylesheet"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="javascript.js"></script>
-    <title>Databass</title>
+    <title>dataBass</title>
   </head>
   <body>
-    <div class="container-fluid">
-
-        <!--TITLE BAR-->
-        <div class="row">
-            <div class="col-lg-12" id="title">
-                <form> 
-                    <input style="border:none" type="text" name="songTitle" id="songInput" placeholder='Search Here'>
-                </form>
-            </div>
+    <h1>dataBass</h1>
+    <h2>dataBass will find lyrics to your favorite songs and analyze the emotional attributes of the lyrics. </h2>
+    <h3> Give it try in the input fields below!</h3>
+  
+    <div class = "ree">
+        <input type="text" placeholder="Track Name" id="track">
+        <input type="text" placeholder="Artist Name" id="artist">
         </div>
+        <div class = "buttonbox">
+        <button id="submit">Search</button>
+        <button id="analyze">Analyze</button>
+        </div>  
+    
+    
+    
+    <div id="lyricCenter">
 
-        <!--SONG PROGRESS BAR-->
-        <div class="row">
-            <div class="col-lg-12" id="songBar">
-                <div class="progress">
-                        <div class="progress-bar bar-block" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">
-                        </div>
-                </div>
-            </div>
+        <div class="row lyricSpot">
+            <div id="lyricsDisplay"></div>
+             
+             <div id="emotionsScore"></div>
         </div>
-
-        <!--LYRICS DISPLAY DROPDOWN-->
-        <div class="row">
-            <div class="collapse" id="lyricsDisplay">
-                    <div class="card card-body">
-                            
-                    </div>
-            </div>
-        </div>
-        <input id="track">Track<br>
-        <input id="artist">Artist<br>
-        <button id="submit">Submit</button>
-        <div id="trackInfo"></div>
-        <div id="emotionsScore"></div>
-        <button id="analyze">analyze</button>
-
-        <!--LYRICS BUTTON-->
-        <div class="row">
-            <div class="col-lg-5" id="bumper1a"></div>
-
-            <div class="col-lg-2" id="lyricsBtn">
-                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="collapse" data-target="#lyricsDisplay" aria-expanded="false" aria-controls="lyricsDisplay">
-                        <h4>Lyrics</h4>
-                </button>
-            </div>
-
-            <div class="col-lg-5" id="bumper1b"></div>
         </div>
 
       
   
-
-      
-      
-        <!--ALBUM DISPLAY-->
-        <div class="row">
-            <div class="col-lg-1" id="bumper2a"></div>
-
-            <div class="col-lg-4" id="albumDisplay">
-                <h3 class="contentTitles">ALBUMS</h3>
-                <hr/>
-            </div>
-
-            <div class="col-lg-2" id="bumper2b"></div>
-
-        <!--BIO DISPLAY-->
-            <div class="col-lg-4" id="bioDisplay">
-                <h3 class="contentTitles">BIO</h3>
-                <hr/>
-            </div>
-
-            <div class="col-lg-1" id="bumper2c"></div>
-        </div>
-
         <!--PICTURE DISPLAY-->
-        <div class="row">
-                <div class="col-lg-1" id="bumper3a"></div>
-    
-                <div class="col-lg-10" id="picDisplay">
-                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col"><img src="assets/images/danny1.jpg" class="d-block w-100" alt="..."></div>
-                                    <div class="col"><img src="assets/images/danny2.jpg" class="d-block w-100" alt="..."></div>
-                                    <div class="col"><img src="assets/images/danny3.jfif" class="d-block w-100" alt="..."></div>
-                                </div>
-                                </div>
-                                <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col"><img src="assets/images/danny3.jfif" class="d-block w-100" alt="..."></div>
-                                    <div class="col"><img src="assets/images/danny2.jpg" class="d-block w-100" alt="..."></div>
-                                    <div class="col"><img src="assets/images/danny1.jpg" class="d-block w-100" alt="..."></div>
-                                </div>
-                                </div>
-                            </div>
-                            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                    </div>
-                </div>
-    
-                <div class="col-lg-1" id="bumper3c"></div>
-            </div>
-
-
-    </div>
-    
-
+       
 
 
     <!-- Optional JavaScript -->

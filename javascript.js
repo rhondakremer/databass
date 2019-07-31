@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+
+
+
+    
+
     $("#submit").click(function () {
         var track = $("#track").val().trim();
         var artist = $("#artist").val().trim();
@@ -75,10 +80,23 @@ $(document).ready(function () {
             console.log($("#lyricsDisplay").val());
             console.log(response);
             console.log(response.emotion_scores);
-            var emotionText = JSON.stringify(response.emotion_scores)
-            $("#emotionsScore").html("<p>" + emotionText + "</p>")
-                
-          
+
+            var anger = JSON.stringify(response.emotion_scores.anger);
+            var joy =  JSON.stringify(response.emotion_scores.joy);
+            var fear =  JSON.stringify(response.emotion_scores.fear);
+            var surprise =  JSON.stringify(response.emotion_scores.surprise);
+            var disgust =  JSON.stringify(response.emotion_scores.disgust);
+            var sadness =  JSON.stringify(response.emotion_scores.sadness);
+            console.log(anger);
+
+        $("#emotionsScore").html( "Anger level: " + anger + "</br></br>") 
+        $("#emotionsScore").append( "Joy level: " + joy + "</br></br>") 
+        $("#emotionsScore").append( "Fear level: " + fear + "</br></br>") 
+        $("#emotionsScore").append( "Surprise level: " + surprise + "</br> </br>") 
+        $("#emotionsScore").append( "Disgust level: " + disgust + "</br></br>") 
+        $("#emotionsScore").append( "Sadness level: " + sadness + "</br></br>") 
+           
+
         
     
             
@@ -87,6 +105,5 @@ $(document).ready(function () {
     
     
     });
-    
 
 });
