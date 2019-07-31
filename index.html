@@ -8,6 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">  
   <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
@@ -15,6 +16,8 @@
     <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="javascript.js"></script>
+    
+    
     <title>Databass</title>
 </head>
 
@@ -25,19 +28,9 @@
         <div class="row">
             <div class="col-lg-12" id="title">
                 <form>
-                    <input style="border:none" type="text" name="songTitle" id="songInput" placeholder='Search Here'>
+                    <input style="border:none" type="text" name="songTitle" id="track" placeholder='Search Track'>
+                    <input style="border:none" type="text" name="songTitle" id="artist" placeholder='Search Artist'>
                 </form>
-            </div>
-        </div>
-
-        <!--SONG PROGRESS BAR-->
-        <div class="row">
-            <div class="col-lg-12" id="songBar">
-                <div class="progress">
-                    <div class="progress-bar bar-block" role="progressbar" style="width: 100%" aria-valuenow="100"
-                        aria-valuemin="0" aria-valuemax="100">
-                    </div>
-                </div>
             </div>
         </div>
 
@@ -49,12 +42,6 @@
                     </div>
             </div>
         </div>
-        <input id="track">Track<br>
-        <input id="artist">Artist<br>
-        <button id="submit">Submit</button>
-        <div id="trackInfo"></div>
-        <div id="emotionsScore"></div>
-        <button id="analyze">analyze</button>
 
         <!--LYRICS BUTTON-->
         <div class="row">
@@ -67,81 +54,21 @@
                 </button>
             </div>
 
+            <button id="submit">Submit</button>
+            <div id="trackInfo"></div>
+            <div id="emotionsScore"></div>
+            <button id="analyze">analyze</button>
+
             <div class="col-lg-5" id="bumper1b"></div>
         </div>
-
-      
-  
-
-      
       
         <!--ALBUM DISPLAY-->
         <div class="row">
-            <div class="col-lg-1" id="bumper2a"></div>
+            <div class="col-lg-4" id="bumper2a"></div>
 
-            <div class="col-lg-4" id="albumDisplay">
-                <h3 class="contentTitles">ALBUMS</h3>
-                <hr />
+            <div class="col-lg-4" id="chartDisplay">
+                <canvas id="myChart" width="1" height="1"></canvas>
             </div>
-
-            <div class="col-lg-2" id="bumper2b"></div>
-
-            <!--BIO DISPLAY-->
-            <div class="col-lg-4" id="bioDisplay">
-                <h3 class="contentTitles">BIO</h3>
-                <hr />
-            </div>
-
-            <div class="col-lg-1" id="bumper2c"></div>
-        </div>
-
-        <!--PICTURE DISPLAY-->
-        <div class="row">
-            <div class="col-lg-1" id="bumper3a"></div>
-
-            <div class="col-lg-10" id="picDisplay">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                    <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                    </ol>
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <div class="row">
-                                <div class="col"><img src="assets/images/danny1.jpg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="col"><img src="assets/images/danny2.jpg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="col"><img src="assets/images/danny3.jfif" class="d-block w-100" alt="...">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="row">
-                                <div class="col"><img src="assets/images/danny3.jfif" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="col"><img src="assets/images/danny2.jpg" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="col"><img src="assets/images/danny1.jpg" class="d-block w-100" alt="...">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="col-lg-1" id="bumper3c"></div>
-        </div>
-
 
     </div>
 
@@ -154,5 +81,6 @@
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    
     
   </body>
