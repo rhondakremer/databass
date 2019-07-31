@@ -61,7 +61,7 @@ $(document).ready(function () {
     
         $.ajax({
             url: queryURL,
-            dataType: "json",
+            //dataType: "json",
             headers: {"x-rapidapi-host" : "twinword-emotion-analysis-v1.p.rapidapi.com",
             "x-rapidapi-key": "019d9911ccmsh87bdd63e27af5c7p1fb859jsn4a1152c06ebe"},
             data: {
@@ -76,7 +76,11 @@ $(document).ready(function () {
             console.log(response);
             console.log(response.emotion_scores);
             var emotionText = JSON.stringify(response.emotion_scores)
-            $("#emotionsScore").html("<p>" + emotionText + "</p>")
+            for (let i = 0; i < emotionText.length; i++) {
+                $("#emotionsScore").html("<li>" + emotionText + "</li>")
+                
+            }
+           
                 
           
         
