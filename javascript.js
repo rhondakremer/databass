@@ -2,6 +2,11 @@
 
 $(document).ready(function () {
 
+
+
+
+    
+
     $("#submit").click(function () {
         var track = $("#track").val().trim();
         var artist = $("#artist").val().trim();
@@ -76,45 +81,24 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log($("#lyricsDisplay").val());
             console.log(response);
-            console.log(response.emotion_scores);            
-            var data = [response.emotion_scores.joy, response.emotion_scores.sadness, response.emotion_scores.anger, response.emotion_scores.disgust, response.emotion_scores.fear, response.emotion_scores.surprise]
-            var emotionText = JSON.stringify(data)
+            console.log(response.emotion_scores);
+            var anger = (parseFloat((JSON.stringify(response.emotion_scores.anger))).toFixed(2))*100;
+            var joy =  (parseFloat((JSON.stringify(response.emotion_scores.joy))).toFixed(2))*100;
+            var fear =  (parseFloat((JSON.stringify(response.emotion_scores.fear))).toFixed(2))*100;
+            var surprise = (parseFloat((JSON.stringify(response.emotion_scores.surprise))).toFixed(2))*100;
+            var disgust =  (parseFloat((JSON.stringify(response.emotion_scores.disgust))).toFixed(2))*100;
+            var sadness =  (parseFloat((JSON.stringify(response.emotion_scores.sadness))).toFixed(2))*100;
+            
+            console.log(anger);
 
-            var ctx = document.getElementById('myChart');
-            var myChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: ['Joy', 'Surprise', 'Anger', 'Sadness', 'Fear', 'Disgust'],
-                    datasets: [{
-                        label: 'Emotions Detected',
-                        data: data,
-                        backgroundColor: [
-                            'rgba(255, 99, 132, 0.2)',
-                            'rgba(54, 162, 235, 0.2)',
-                            'rgba(255, 206, 86, 0.2)',
-                            'rgba(75, 192, 192, 0.2)',
-                            'rgba(153, 102, 255, 0.2)',
-                            'rgba(255, 159, 64, 0.2)'
-                        ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                            'rgba(255, 206, 86, 1)',
-                            'rgba(75, 192, 192, 1)',
-                            'rgba(153, 102, 255, 1)',
-                            'rgba(255, 159, 64, 1)'
-                        ],
-                        borderWidth: 3,
-                        pointBackgroundColor: "red"
-                    }]
-                },
-                options: {
-                    
-                }
-            });
-            $("#emotionsScore").html("<p>"  + myChart + "</p>")
-                
-          
+        $("#emotionsScore").html( "Anger level: " + anger + "%" + "</br></br>") 
+        $("#emotionsScore").append( "Joy level: " + joy +  "%" + "</br></br>") 
+        $("#emotionsScore").append( "Fear level: " + fear + "%" + "</br></br>") 
+        $("#emotionsScore").append( "Surprise level: " + surprise + "%" + "</br> </br>") 
+        $("#emotionsScore").append( "Disgust level: " + disgust + "%" + "</br></br>") 
+        $("#emotionsScore").append( "Sadness level: " + sadness + "%" + "</br></br>") 
+           
+
         
     
             
@@ -123,6 +107,5 @@ $(document).ready(function () {
     
     
     });
-    
 
 });

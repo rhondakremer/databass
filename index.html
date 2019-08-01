@@ -11,68 +11,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
   <link rel="stylesheet" type="text/css" href="style.css">  
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Blinker&display=swap" rel="stylesheet"> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="javascript.js"></script>
+    <title>dataBass</title>
+  </head>
+  <body>
+    <h1>dataBass</h1>
+    <h2>dataBass will find lyrics to your favorite songs and analyze the emotional attributes of the lyrics. </h2>
+    <h3> Give it a try in the input fields below!</h3>
+  
+    <div class = "ree">
+        <input type="text" placeholder="Track Name" id="track">
+        <input type="text" placeholder="Artist Name" id="artist">
+        </div>
+        <div class = "buttonbox">
+        <button id="submit">Search</button>
+        <button id="analyze">Analyze</button>
+        </div>  
     
     
-    <title>Databass</title>
-</head>
+    
+    <div id="lyricCenter">
 
-<body>
-    <div class="container-fluid">
-
-        <!--TITLE BAR-->
-        <div class="row">
-            <div class="col-lg-12" id="title">
-                <form>
-                    <input style="border:none" type="text" name="songTitle" id="track" placeholder='Search Track'>
-                    <input style="border:none" type="text" name="songTitle" id="artist" placeholder='Search Artist'>
-                </form>
-            </div>
+        <div class="row lyricSpot">
+            <div id="lyricsDisplay"></div>
+             
+             <div id="emotionsScore"></div>
+        </div>
         </div>
 
-        <!--LYRICS DISPLAY DROPDOWN-->
-        <div class="row">
-            <div class="collapse" id="lyricsDisplay">
-                    <div class="card card-body">
-                            
-                    </div>
-            </div>
-        </div>
-
-        <!--LYRICS BUTTON-->
-        <div class="row">
-            <div class="col-lg-5" id="bumper1a"></div>
-
-            <div class="col-lg-2" id="lyricsBtn">
-                <button type="button" class="btn btn-primary btn-lg btn-block" data-toggle="collapse"
-                    data-target="#lyricsDisplay" aria-expanded="false" aria-controls="lyricsDisplay">
-                    <h4>Lyrics</h4>
-                </button>
-            </div>
-
-            <button id="submit">Submit</button>
-            <div id="trackInfo"></div>
-            <div id="emotionsScore"></div>
-            <button id="analyze">analyze</button>
-
-            <div class="col-lg-5" id="bumper1b"></div>
-        </div>
       
-        <!--ALBUM DISPLAY-->
-        <div class="row">
-            <div class="col-lg-4" id="bumper2a"></div>
-
-            <div class="col-lg-4" id="chartDisplay">
-                <canvas id="myChart" width="1" height="1"></canvas>
-            </div>
-
-    </div>
-
-
+  
+        <!--PICTURE DISPLAY-->
+       
 
 
     <!-- Optional JavaScript -->
@@ -81,6 +59,5 @@
    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
     
   </body>
