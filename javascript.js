@@ -76,13 +76,7 @@ $(document).ready(function () {
         }).then(function (response) {
             console.log($("#lyricsDisplay").val());
             console.log(response);
-            console.log(response.emotion_scores);
-            // var joy = response.emotion_scores.joy;
-            // var sadness = response.emotion_scores.sadness;
-            // var anger = response.emotion_scores.anger;
-            // var disgust = response.emotion_scores.disgust;
-            // var fear = response.emotion_scores.fear;
-            // var surprise = response.emotion_scores.surprise;
+            console.log(response.emotion_scores);            
             var data = [response.emotion_scores.joy, response.emotion_scores.sadness, response.emotion_scores.anger, response.emotion_scores.disgust, response.emotion_scores.fear, response.emotion_scores.surprise]
             var emotionText = JSON.stringify(data)
 
