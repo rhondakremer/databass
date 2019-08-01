@@ -27,6 +27,7 @@
     float: right!important;
     font-size: 28px;
     font-weight: bold;
+    text-align: right;
   }
   
   .close:hover,
