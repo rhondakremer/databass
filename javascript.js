@@ -165,7 +165,7 @@ $(document).ready(function () {
     
     
         }).then(function (response) {
-            for (let i = 0; i < response.length; i++) {
+            for (let i = 0; i < 10; i++) {
             //console.log(response[i].word);
             $("#rhymingWords").append(response[i].word + " <br>")   
         }      
@@ -183,7 +183,7 @@ $(document).ready(function () {
         
         
             }).then(function (response) {
-                for (let i = 0; i < response.length; i++) {
+                for (let i = 0; i < 10; i++) {
                 //console.log(response[i].word);
                 $("#synonyms").append(response[i].word + " <br>")   
             }      
