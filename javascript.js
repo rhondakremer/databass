@@ -104,6 +104,61 @@ $(document).ready(function () {
 
     });
 
+
+    function rhymingWordsFinder() {
+        var inputtedWord = $("#wordInput").val();
+        var queryURL = "https://api.datamuse.com/words?rel_rhy=" + inputtedWord;
+    
+    
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+    
+    
+        }).then(function (response) {
+            for (let i = 0; i < response.length; i++) {
+            //console.log(response[i].word);
+            $("#rhymingWords").append(response[i].word + " <br>")   
+        }      
+        });
+        }  
+    
+    function synonymFinder() {
+            var inputtedWord = $("#wordInput").val();
+            var queryURL = "https://api.datamuse.com/words?ml=" + inputtedWord;
+        
+        
+            $.ajax({
+                url: queryURL,
+                method: "GET",
+        
+        
+            }).then(function (response) {
+                for (let i = 0; i < response.length; i++) {
+                //console.log(response[i].word);
+                $("#synonyms").append(response[i].word + " <br>")   
+            }      
+            });
+            
+    }
+    
+    
+    
+    
+    
+    
+    
+    $("#synonymsButton").click(function () {
+        $("#synonyms").empty();
+        synonymFinder();
+    });
+    
+    $("#rhymingButton").click(function () {
+        $("#rhymingWords").empty();
+        rhymingWordsFinder()
+    });
+
+
     //Logic for modal
     var modal = $(".modal");
     var span = document.getElementsByClassName("close");

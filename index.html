@@ -1,79 +1,91 @@
 <!doctype html>
 <html lang="en">
 
-  <head>
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="style.css"> 
-  <link rel="stylesheet" href="assets/css/modal.css"> 
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="assets/css/modal.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Blinker&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Kalam&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Blinker&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript" src="http://tracking.musixmatch.com/t1.0/AMa6hJCIEzn1v8RuOP"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="javascript.js"></script>
     <title>dataBass</title>
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>dataBass</h1>
-    <h2>dataBass will find lyrics to your favorite songs and analyze the emotional attributes of the lyrics. </h2>
+    <h2>dataBass will help you write your lyrics</h2>
     <h3> Give it a try in the input fields below!</h3>
 
-    <div class = "ree">
+    <div class="ree">
         <input type="text" placeholder="Track Name" id="track">
         <input type="text" placeholder="Artist Name" id="artist">
-        </div>
-        <div class = "buttonbox">
+    </div>
+    <div class="buttonbox">
         <button id="submit">Search</button>
         <button id="analyze">Analyze</button>
-        </div>  
-    
-    
-    
+    </div>
+
+
+
     <div id="lyricCenter">
 
         <div class="row lyricSpot">
             <div id="lyricsDisplay"></div>
-             
-             <div id="emotionsScore"></div>
-        </div>
-        </div>
 
-      
-  
-        <!--PICTURE DISPLAY-->
-       
+            <div id="emotionsScore"></div>
+        </div>
+    </div>
+
+    <input id="wordInput">Type something
+    <button id="synonymsButton">Find Synonyms</button>
+    <button id="rhymingButton">Find Rhymes</button>
+    <div id="rhymingWords"></div>
+    <div id="synonyms"></div>
+
+
+
+    <!--PICTURE DISPLAY-->
+
 
 
     <!-- Optional JavaScript -->
-    
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-   
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
     <div id="myModal1" class="modal">
         <div class="modal-content">
-          <span class="close">x</span>
-          <p>Please enter a value</p>
+            <span class="close">x</span>
+            <p>Please enter a value</p>
         </div>
-      </div>
+    </div>
 
-      <div id="myModal2" class="modal">
+    <div id="myModal2" class="modal">
         <div class="modal-content">
-          <span class="close">x</span>
-          <p>Please check your spelling!</p>
+            <span class="close">x</span>
+            <p>Please check your spelling!</p>
         </div>
-      </div>
+    </div>
 
 
 
-  </body>
+</body>
