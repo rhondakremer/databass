@@ -200,7 +200,7 @@ $(document).ready(function () {
         var inputtedWord = $("#wordInput").val();
         console.log(inputtedWord)
         var queryURL = "https://api.datamuse.com/words?rel_rhy=" + inputtedWord;
-    
+        //$("#wordInput").val("");
     
         $.ajax({
             url: queryURL,
@@ -219,7 +219,8 @@ $(document).ready(function () {
             var inputtedWord = $("#wordInput").val();
             console.log(inputtedWord)
             var queryURL = "https://api.datamuse.com/words?ml=" + inputtedWord;
-        
+            //$("#wordInput").val("");
+
             $.ajax({
                 url: queryURL,
                 method: "GET",
