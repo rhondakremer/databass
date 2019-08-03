@@ -118,3 +118,16 @@ justify-content: center;
     text-align: center;
 margin-bottom: 15px;
 }
+
+#graphDisplay {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 1em;
+  margin-top: 2em;
+  height: 30em;
+  display: inherit;
+  justify-content: center;
+}
+
+#mychart {
+  display: inherit;
+}

@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
 
 
@@ -100,6 +102,7 @@ $(document).ready(function () {
         }
     });
 
+    var ctx = document.getElementById('myChart');
 
     $("#analyze").click(function () {
 
@@ -132,15 +135,54 @@ $(document).ready(function () {
             var surprise = (parseFloat((JSON.stringify(response.emotion_scores.surprise))).toFixed(2)) * 100;
             var disgust = (parseFloat((JSON.stringify(response.emotion_scores.disgust))).toFixed(2)) * 100;
             var sadness = (parseFloat((JSON.stringify(response.emotion_scores.sadness))).toFixed(2)) * 100;
+            var data = [anger, joy, fear, surprise, disgust, sadness];
 
-            console.log(anger);
+            //CHART
+            var myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Anger', 'Joy', 'Fear', 'Surprise', 'Disgust', 'Sadness'],
+                    datasets: [{
+                        label: '% of emotion',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 3,
+                        pointBackgroundColor: "red"
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        
 
-            $("#emotionsScore").html("Anger level: " + anger + "%" + "</br></br>")
-            $("#emotionsScore").append("Joy level: " + joy + "%" + "</br></br>")
-            $("#emotionsScore").append("Fear level: " + fear + "%" + "</br></br>")
-            $("#emotionsScore").append("Surprise level: " + surprise + "%" + "</br> </br>")
-            $("#emotionsScore").append("Disgust level: " + disgust + "%" + "</br></br>")
-            $("#emotionsScore").append("Sadness level: " + sadness + "%" + "</br></br>")
+            $("#emotionsScore").html("Anger level: " + Math.floor(anger) + "%" + "</br></br>")
+            $("#emotionsScore").append("Joy level: " + Math.floor(joy) + "%" + "</br></br>")
+            $("#emotionsScore").append("Fear level: " + Math.floor(fear) + "%" + "</br></br>")
+            $("#emotionsScore").append("Surprise level: " + Math.floor(surprise) + "%" + "</br> </br>")
+            $("#emotionsScore").append("Disgust level: " + Math.floor(disgust) + "%" + "</br></br>")
+            $("#emotionsScore").append("Sadness level: " + Math.floor(sadness) + "%" + "</br></br>")
 
 
 
@@ -151,7 +193,7 @@ $(document).ready(function () {
 
 
     });
-
+    
 
     function rhymingWordsFinder() {
         var inputtedWord = $("wordInput").val();
