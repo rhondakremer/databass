@@ -154,7 +154,8 @@ $(document).ready(function () {
 
 
     function rhymingWordsFinder() {
-        var inputtedWord = $("wordInput").val();
+        var inputtedWord = $("#wordInput").val();
+        console.log(inputtedWord)
         var queryURL = "https://api.datamuse.com/words?rel_rhy=" + inputtedWord;
     
     
@@ -173,8 +174,8 @@ $(document).ready(function () {
     
     function synonymFinder() {
             var inputtedWord = $("#wordInput").val();
+            console.log(inputtedWord)
             var queryURL = "https://api.datamuse.com/words?ml=" + inputtedWord;
-        
         
             $.ajax({
                 url: queryURL,
@@ -202,8 +203,9 @@ $(document).ready(function () {
     });
     
     $("#rhymingButton").click(function () {
-        $("#rhymingWords").empty();
+        
         rhymingWordsFinder()
+        $("#rhymingWords").empty();
     });
 
 
