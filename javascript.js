@@ -1,6 +1,54 @@
 $(document).ready(function () {
 
 
+    $("#analyzeText").click(function () {
+
+        var lyricsText = $("#userText").val();
+        console.log(lyricsText);
+        var queryURL = "https://twinword-emotion-analysis-v1.p.rapidapi.com/analyze/";
+
+
+        $.ajax({
+            url: queryURL,
+            //dataType: "json",
+            headers: {
+                "x-rapidapi-host": "twinword-emotion-analysis-v1.p.rapidapi.com",
+                "x-rapidapi-key": "019d9911ccmsh87bdd63e27af5c7p1fb859jsn4a1152c06ebe"
+            },
+            data: {
+                "text": lyricsText
+            },
+
+            method: "GET"
+
+
+        }).then(function (response) {
+            console.log($("#lyricsDisplay").val());
+            console.log(response);
+            console.log(response.emotion_scores);
+            var anger = (parseFloat((JSON.stringify(response.emotion_scores.anger))).toFixed(2)) * 100;
+            var joy = (parseFloat((JSON.stringify(response.emotion_scores.joy))).toFixed(2)) * 100;
+            var fear = (parseFloat((JSON.stringify(response.emotion_scores.fear))).toFixed(2)) * 100;
+            var surprise = (parseFloat((JSON.stringify(response.emotion_scores.surprise))).toFixed(2)) * 100;
+            var disgust = (parseFloat((JSON.stringify(response.emotion_scores.disgust))).toFixed(2)) * 100;
+            var sadness = (parseFloat((JSON.stringify(response.emotion_scores.sadness))).toFixed(2)) * 100;
+
+            console.log(anger);
+
+            $("#userLyricsAnalysis").html("Anger level: " + anger + "%" + "</br></br>")
+            $("#userLyricsAnalysis").append("Joy level: " + joy + "%" + "</br></br>")
+            $("#userLyricsAnalysis").append("Fear level: " + fear + "%" + "</br></br>")
+            $("#userLyricsAnalysis").append("Surprise level: " + surprise + "%" + "</br> </br>")
+            $("#userLyricsAnalysis").append("Disgust level: " + disgust + "%" + "</br></br>")
+            $("#userLyricsAnalysis").append("Sadness level: " + sadness + "%" + "</br></br>")
+
+        });
+    });
+
+
+
+
+
     $("#submit").click(function () {
         var track = $("#track").val().trim();
         var artist = $("#artist").val().trim();
@@ -106,7 +154,7 @@ $(document).ready(function () {
 
 
     function rhymingWordsFinder() {
-        var inputtedWord = $("#wordInput").val();
+        var inputtedWord = $("wordInput").val();
         var queryURL = "https://api.datamuse.com/words?rel_rhy=" + inputtedWord;
     
     
