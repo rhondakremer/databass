@@ -1,3 +1,5 @@
+
+
 $(document).ready(function () {
 
 
@@ -35,6 +37,13 @@ $(document).ready(function () {
 
             console.log(anger);
 
+
+
+
+
+
+
+            
             $("#userLyricsAnalysis").html("Anger level: " + anger + "%" + "</br></br>")
             $("#userLyricsAnalysis").append("Joy level: " + joy + "%" + "</br></br>")
             $("#userLyricsAnalysis").append("Fear level: " + fear + "%" + "</br></br>")
@@ -54,10 +63,11 @@ $(document).ready(function () {
         var artist = $("#artist").val().trim();
         console.log(track);
         $("#trackInfo").empty();
+        $("#emotionsScore").empty();
+    
         if (track == "") {
             $("#myModal1").css("display", "block");
         } else {
-
             var queryURL = "https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=" + track + "&q_artist=" + artist + "&page_size=1&page=1&s_track_rating=desc&apikey=4361e89398d1b525228c0f37e4566dc1";
 
 
@@ -100,6 +110,7 @@ $(document).ready(function () {
         }
     });
 
+    var ctx = document.getElementById('myChart');
 
     $("#analyze").click(function () {
 
@@ -132,15 +143,54 @@ $(document).ready(function () {
             var surprise = (parseFloat((JSON.stringify(response.emotion_scores.surprise))).toFixed(2)) * 100;
             var disgust = (parseFloat((JSON.stringify(response.emotion_scores.disgust))).toFixed(2)) * 100;
             var sadness = (parseFloat((JSON.stringify(response.emotion_scores.sadness))).toFixed(2)) * 100;
+            var data = [anger, joy, fear, surprise, disgust, sadness];
 
-            console.log(anger);
+            //CHART
+            var myChart = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Anger', 'Joy', 'Fear', 'Surprise', 'Disgust', 'Sadness'],
+                    datasets: [{
+                        label: '% of emotion',
+                        data: data,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(555, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 3,
+                        pointBackgroundColor: "blue"
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+        
 
-            $("#emotionsScore").html("Anger level: " + anger + "%" + "</br></br>")
-            $("#emotionsScore").append("Joy level: " + joy + "%" + "</br></br>")
-            $("#emotionsScore").append("Fear level: " + fear + "%" + "</br></br>")
-            $("#emotionsScore").append("Surprise level: " + surprise + "%" + "</br> </br>")
-            $("#emotionsScore").append("Disgust level: " + disgust + "%" + "</br></br>")
-            $("#emotionsScore").append("Sadness level: " + sadness + "%" + "</br></br>")
+            $("#emotionsScore").html("Anger level: " + Math.floor(anger) + "%" + "</br></br>")
+            $("#emotionsScore").append("Joy level: " + Math.floor(joy) + "%" + "</br></br>")
+            $("#emotionsScore").append("Fear level: " + Math.floor(fear) + "%" + "</br></br>")
+            $("#emotionsScore").append("Surprise level: " + Math.floor(surprise) + "%" + "</br> </br>")
+            $("#emotionsScore").append("Disgust level: " + Math.floor(disgust) + "%" + "</br></br>")
+            $("#emotionsScore").append("Sadness level: " + Math.floor(sadness) + "%" + "</br></br>")
 
 
 
@@ -151,12 +201,13 @@ $(document).ready(function () {
 
 
     });
-
+    
 
     function rhymingWordsFinder() {
-        var inputtedWord = $("wordInput").val();
+        var inputtedWord = $("#wordInput").val();
+        console.log(inputtedWord)
         var queryURL = "https://api.datamuse.com/words?rel_rhy=" + inputtedWord;
-    
+        //$("#wordInput").val("");
     
         $.ajax({
             url: queryURL,
@@ -164,7 +215,7 @@ $(document).ready(function () {
     
     
         }).then(function (response) {
-            for (let i = 0; i < response.length; i++) {
+            for (let i = 0; i < 10; i++) {
             //console.log(response[i].word);
             $("#rhymingWords").append(response[i].word + " <br>")   
         }      
@@ -173,16 +224,17 @@ $(document).ready(function () {
     
     function synonymFinder() {
             var inputtedWord = $("#wordInput").val();
+            console.log(inputtedWord)
             var queryURL = "https://api.datamuse.com/words?ml=" + inputtedWord;
-        
-        
+            //$("#wordInput").val("");
+
             $.ajax({
                 url: queryURL,
                 method: "GET",
         
         
             }).then(function (response) {
-                for (let i = 0; i < response.length; i++) {
+                for (let i = 0; i < 10; i++) {
                 //console.log(response[i].word);
                 $("#synonyms").append(response[i].word + " <br>")   
             }      
@@ -202,8 +254,9 @@ $(document).ready(function () {
     });
     
     $("#rhymingButton").click(function () {
-        $("#rhymingWords").empty();
+        
         rhymingWordsFinder()
+        $("#rhymingWords").empty();
     });
 
 

@@ -2,12 +2,7 @@
     background-color: aqua;
     text-align: center;
     height: 13em;
-    padding-top: 2em;
-}
 
-#songBar {
-    height: 1em;
-    background-color: #007BFF;
 }
 
 #lyricsBtn {
@@ -15,31 +10,19 @@
     text-align: center;
 }
 
-#songInput {
-    background-color: aqua;
-    height: 1em;
-    width: 8em;
-    font-size: 9em;
-    font-family: 'Open Sans Condensed', sans-serif;
-}
+
+
 
 input {
     outline: none;
     text-align: center;
 }
 
-#albumDisplay {
+#chartDisplay {
     background-color: lightblue;
     border-radius: 1em;
     margin-top: 2em;
-    height: 15em;
-}
-
-#bioDisplay {
-    background-color: lightblue;
-    border-radius: 1em;
-    margin-top: 2em;
-    height: 15em;
+    height: 20em;
 }
 
 hr {
@@ -50,15 +33,5 @@ hr {
     color: white;
 }
 
-#picDisplay {
-    background-color: lightblue;
-    margin-top: 2em;
-    height: 15em;
 
-}
 
-img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-}
