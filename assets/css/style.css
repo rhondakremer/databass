@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #title {
     background-color: aqua;
     text-align: center;
@@ -35,3 +36,46 @@ hr {
 
 
 
+=======
+#title {
+    background-color: aqua;
+    text-align: center;
+    height: 13em;
+
+}
+
+#lyricsBtn {
+    height: 3em;
+    text-align: center;
+}
+
+#track, #artist {
+    background-color: aqua;
+    height: 1.5em;
+    width: 8em;
+    font-size: 4em;
+}
+
+input {
+    outline: none;
+    text-align: center;
+}
+
+#chartDisplay {
+    background-color: lightblue;
+    border-radius: 1em;
+    margin-top: 2em;
+    height: 20em;
+}
+
+hr {
+    background-color: violet;
+}
+
+.contentTitles {
+    color: white;
+}
+
+
+
+>>>>>>> d97b33acb1e98d7af1c187f4f7653bad33130ae1

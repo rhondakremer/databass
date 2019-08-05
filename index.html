@@ -29,74 +29,49 @@
     <h1>dataBass</h1>
     <h2>dataBass will help you write your lyrics</h2>
     <h3> Give it a try in the input fields below!</h3>
- 
-<div class="ree">
+    <div class="userTextbox">
+        <textarea type="text" placeholder="type your lyrics here" id="userText" cols="20" rows="15"></textarea>
+        <button id="analyzeText">Analyze Your Lyrics</button>
+        <div id="userLyricsAnalysis"></div>
+    </div>
+    <div class="ree">
         <input type="text" placeholder="Track Name" id="track">
         <input type="text" placeholder="Artist Name (optional)" id="artist">
-       
-     </div>
-
+    </div>
     <div class="buttonbox">
         <button id="submit">Search</button>
         <button id="analyze">Analyze</button>
-        
     </div>
 
-  
+
 
     <div id="lyricCenter">
-     <div class="row lyricSpot">
+
+        <div class="row lyricSpot">
             <div id="lyricsDisplay"></div>
-            <div id="graphDisplay">
-                <canvas id="myChart" width= 300px style="height:30em"></canvas>
-        </div>    
+
             <div id="emotionsScore"></div>
-
-         
-            
         </div>
     </div>
-   
-        
-  
 
-<h4>Want to analyze your own text or lyrics? Insert your text below and press analyze</h4>
+    <input id="wordInput">Type something
+    <button id="synonymsButton">Find Synonyms</button>
+    <button id="rhymingButton">Find Rhymes</button>
+    <div id="rhymingWords"></div>
+    <div id="synonyms"></div>
 
-
-    <div class="userTextbox">
-    
-        <textarea type="text" placeholder="type your lyrics here" id="userText"></textarea>
-        
-    
-        <div id="userLyricsAnalysis" ></div>
-        <div id="graphDisplay2">
-            <canvas id="myChart2" width= 300px style="height:30em"></canvas>
-    </div>  
-        <button id="analyzeText">Analyze</button>
+    <div class="row">
+        <div class="col-lg-4" id="bumper"></div>
+        <div class="col-lg-4" id="graphDisplay">
+                <canvas id="myChart" width="400" height="400" style="height:30em"></canvas>
+        </div>    
     </div>
-    
+
+
+    <!--PICTURE DISPLAY-->
 
 
 
-
-
-
-
-
-    
-    <h5>Need help finding different words or rhymes to make certain emotional attributes of your text to increase?</h5>
-    <h6>Try searching for helpful synonyms and rhymes below</h6>
-    
-
-
-
-        <div class = "ree">
-        <input id="wordInput" placeholder="Type something">
-        <div id="synonyms"></div>
-        <div id="rhymingWords"></div>
-        <button id="synonymsButton">Find Synonyms</button>
-        <button id="rhymingButton">Find Rhymes</button>
-        </div>
     <!-- Optional JavaScript -->
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
