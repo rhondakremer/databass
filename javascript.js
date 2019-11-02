@@ -3,15 +3,64 @@
 $(document).ready(function () {
 
 
+    $("#analyzeText").click(function () {
+
+        var lyricsText = $("#userText").val();
+        console.log(lyricsText);
+        var queryURL = "https://twinword-emotion-analysis-v1.p.rapidapi.com/analyze/";
+
+
+        $.ajax({
+            url: queryURL,
+            //dataType: "json",
+            headers: {
+                "x-rapidapi-host": "twinword-emotion-analysis-v1.p.rapidapi.com",
+                "x-rapidapi-key": "019d9911ccmsh87bdd63e27af5c7p1fb859jsn4a1152c06ebe"
+            },
+            data: {
+                "text": lyricsText
+            },
+
+            method: "GET"
+
+
+        }).then(function (response) {
+            console.log($("#lyricsDisplay").val());
+            console.log(response);
+            console.log(response.emotion_scores);
+            var anger = (parseFloat((JSON.stringify(response.emotion_scores.anger))).toFixed(2)) * 100;
+            var joy = (parseFloat((JSON.stringify(response.emotion_scores.joy))).toFixed(2)) * 100;
+            var fear = (parseFloat((JSON.stringify(response.emotion_scores.fear))).toFixed(2)) * 100;
+            var surprise = (parseFloat((JSON.stringify(response.emotion_scores.surprise))).toFixed(2)) * 100;
+            var disgust = (parseFloat((JSON.stringify(response.emotion_scores.disgust))).toFixed(2)) * 100;
+            var sadness = (parseFloat((JSON.stringify(response.emotion_scores.sadness))).toFixed(2)) * 100;
+
+            console.log(anger);
+
+            $("#userLyricsAnalysis").html("Anger level: " + anger + "%" + "</br></br>")
+            $("#userLyricsAnalysis").append("Joy level: " + joy + "%" + "</br></br>")
+            $("#userLyricsAnalysis").append("Fear level: " + fear + "%" + "</br></br>")
+            $("#userLyricsAnalysis").append("Surprise level: " + surprise + "%" + "</br> </br>")
+            $("#userLyricsAnalysis").append("Disgust level: " + disgust + "%" + "</br></br>")
+            $("#userLyricsAnalysis").append("Sadness level: " + sadness + "%" + "</br></br>")
+
+        });
+    });
+
+
+
+
+
     $("#submit").click(function () {
         var track = $("#track").val().trim();
         var artist = $("#artist").val().trim();
         console.log(track);
         $("#trackInfo").empty();
+        $("#emotionsScore").empty();
+    
         if (track == "") {
             $("#myModal1").css("display", "block");
         } else {
-
             var queryURL = "https://cors-anywhere.herokuapp.com/http://api.musixmatch.com/ws/1.1/track.search?q_track=" + track + "&q_artist=" + artist + "&page_size=1&page=1&s_track_rating=desc&apikey=4361e89398d1b525228c0f37e4566dc1";
 
 
@@ -149,8 +198,9 @@ $(document).ready(function () {
 
     function rhymingWordsFinder() {
         var inputtedWord = $("#wordInput").val();
+        console.log(inputtedWord)
         var queryURL = "https://api.datamuse.com/words?rel_rhy=" + inputtedWord;
-    
+        //$("#wordInput").val("");
     
         $.ajax({
             url: queryURL,
@@ -158,7 +208,7 @@ $(document).ready(function () {
     
     
         }).then(function (response) {
-            for (let i = 0; i < response.length; i++) {
+            for (let i = 0; i < 10; i++) {
             //console.log(response[i].word);
             $("#rhymingWords").append(response[i].word + " <br>")   
         }      
@@ -167,16 +217,17 @@ $(document).ready(function () {
     
     function synonymFinder() {
             var inputtedWord = $("#wordInput").val();
+            console.log(inputtedWord)
             var queryURL = "https://api.datamuse.com/words?ml=" + inputtedWord;
-        
-        
+            //$("#wordInput").val("");
+
             $.ajax({
                 url: queryURL,
                 method: "GET",
         
         
             }).then(function (response) {
-                for (let i = 0; i < response.length; i++) {
+                for (let i = 0; i < 10; i++) {
                 //console.log(response[i].word);
                 $("#synonyms").append(response[i].word + " <br>")   
             }      
@@ -196,8 +247,9 @@ $(document).ready(function () {
     });
     
     $("#rhymingButton").click(function () {
-        $("#rhymingWords").empty();
+        
         rhymingWordsFinder()
+        $("#rhymingWords").empty();
     });
 
 
